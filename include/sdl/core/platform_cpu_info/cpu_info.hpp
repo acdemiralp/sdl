@@ -99,10 +99,12 @@ inline void*        simd_alloc             (              const std::size_t size
 {
   return SDL_SIMDAlloc(size);
 }
+// Bad practice: You should use simd_make_unique<type>, simd_make_unique_array<type>, simd_make_shared<type> or simd_make_shared_array<type> instead.
 inline void*        simd_realloc           (void* memory, const std::size_t size)
 {
   return SDL_SIMDRealloc(memory, size);
 }
+// Bad practice: You should use simd_make_unique<type>, simd_make_unique_array<type>, simd_make_shared<type> or simd_make_shared_array<type> instead.
 inline void         simd_free              (void* memory)
 {
   return SDL_SIMDFree(memory);
@@ -209,12 +211,48 @@ std::shared_ptr<type[]>                             simd_make_shared_array(std::
     });
 }
 
-/// TODO: SIMD std::allocator.
 template <typename type>
 struct simd_allocator
 {
-  
+  using value_type                             = type;
+  using size_type                              = std::size_t;
+  using difference_type                        = std::ptrdiff_t;
+  using propagate_on_container_move_assignment = std::true_type;
+  using is_always_equal                        = std::true_type;
+
+  constexpr  simd_allocator() noexcept
+  {
+    // Intentionally blank.
+  }
+  constexpr  simd_allocator(const simd_allocator&            other) noexcept
+  {
+    // Intentionally blank.
+  }
+  template <typename that_type>
+  constexpr  simd_allocator(const simd_allocator<that_type>& other) noexcept
+  {
+    // Intentionally blank.
+  }
+  constexpr ~simd_allocator()
+  {
+    // Intentionally blank.
+  }
+
+  [[nodiscard]]
+  constexpr type* allocate  (               std::size_t size)
+  {
+    return simd_new_array<type>(size).data();
+  }
+  constexpr void  deallocate(type* pointer, std::size_t size)
+  {
+    simd_delete_array<type>(std::span<type>(pointer, size));
+  }
 };
+template <typename lhs_type, typename rhs_type>
+constexpr bool operator==(const simd_allocator<lhs_type>& lhs, const simd_allocator<rhs_type>& rhs) noexcept
+{
+  return std::is_same_v<lhs_type, rhs_type>; // Statelessness implies that all allocators of the same type are identical.
+}
 
 // Future direction: simd_renew and simd_renew_array (C++ realloc equivalents).
 }

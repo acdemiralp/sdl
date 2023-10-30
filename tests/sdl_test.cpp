@@ -1,6 +1,7 @@
 #include <doctest/doctest.h>
 
 #include <iostream>
+#include <vector>
 
 #include <sdl/core/all.hpp>
 #include <sdl/core/basics/log.hpp>
@@ -91,4 +92,9 @@ TEST_CASE("SDL Test")
   sdl::simd_delete_array(simd_array_init_list);
   simd_unique_array_init_list.reset();
   simd_shared_array_init_list.reset();
+
+  std::vector<std::uint64_t, sdl::simd_allocator<std::uint64_t>> simd_vector(array_size, 1);
+  for (auto& value : simd_vector)
+    REQUIRE(value == 1);
+  simd_vector.clear();
 }
