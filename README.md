@@ -33,6 +33,10 @@ Alternatively, you can copy the contents of the include folder to your project.
   - Error handling is performed only if the documentation of the native function specifies an error state.
 - Versioning:
   - The major, minor and patch version are identical to the supported version of SDL.
+- Other:
+  - The order of parameters are identical to the SDL with the following exceptions: 
+    - Parameters with default values are moved to the end of the function.
+    - Parameters with default values are ordered from the most to least likely to be changed.
 
 ### Coverage 
 - The coverage is derived from the [SDL include directory](https://github.com/libsdl-org/SDL/blob/SDL2/include) and categorized according to the [SDL 2.0 API by Category](https://wiki.libsdl.org/SDL2/APIByCategory) documentation.
@@ -142,4 +146,19 @@ Alternatively, you can copy the contents of the include folder to your project.
       - [x] SDL_PowerState
     - [x] Functions:
       - [x] SDL_GetPowerInfo
-  - Additional Functionality:
+  - [ ] Additional Functionality:
+    - [x] Message Boxes (SDL_messagebox.h):
+      - [x] Classes / Structs:
+        - [x] SDL_MessageBoxButtonData
+        - [ ] ~~SDL_MessageBoxColor~~ (Reason: Use `std::array<std::uint8_t, 3>` instead.)
+        - [x] SDL_MessageBoxColorScheme
+        - [ ] ~~SDL_MessageBoxData~~ (Reason: Unnecessary as function `show_message_box` accepts the struct members as parameters.)
+      - [x] Enums:
+        - [ ] ~~SDL_MessageBoxButtonFlags~~ (Reason: Unnecessary as struct `message_box_button_data` contains variables for each flag.)
+        - [ ] ~~SDL_MessageBoxColorType~~ (Reason: Unnecessary as struct `message_box_color_scheme` contains variables for each type.)
+        - [x] SDL_MessageBoxFlags
+      - [x] Functions:
+        - [x] SDL_ShowMessageBox
+        - [x] SDL_ShowSimpleMessageBox 
+    - [ ] Platform-Specific Functionality (SDL_system.h):
+    - [ ] Standard Library Functionality (SDL_stdinc.h):
