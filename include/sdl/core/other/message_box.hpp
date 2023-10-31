@@ -61,10 +61,7 @@ struct message_box_color_scheme
   std::array<std::uint8_t, 3> button_selected   {150, 150, 150};
 };
 
-// Returns a reference to the pressed button.
-// Design Notes:
-// - The button IDs correspond to their location within the vector.
-// - The flags are split into `type` and `left_to_right`.
+// Note: Returns a reference to the pressed button.
 inline const message_box_button& show_message_box       (
   const std::string&                     title         ,
   const std::string&                     message       ,
@@ -74,6 +71,10 @@ inline const message_box_button& show_message_box       (
   const message_box_color_scheme&        color_scheme  = message_box_color_scheme(),
   const bool                             left_to_right = true)
 {
+  // Design Notes:
+  // - The button IDs correspond to their location within the vector.
+  // - The flags are split into `type` and `left_to_right`.
+
   std::vector<SDL_MessageBoxButtonData> native_buttons(buttons.size());
   for (std::size_t i = 0; i < native_buttons.size(); ++i)
     native_buttons[i] = buttons[i].native(static_cast<std::int32_t>(i));
