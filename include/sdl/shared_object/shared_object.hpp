@@ -35,7 +35,7 @@ public:
   [[nodiscard]]
   void*                         load_function          (const std::string& name) const
   {
-    auto result = SDL_LoadFunction(native_, name.c_str());
+    const auto result = SDL_LoadFunction(native_, name.c_str());
 #ifdef SDL_USE_EXCEPTIONS
     if (!result)
       throw std::runtime_error(get_error());
