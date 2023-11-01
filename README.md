@@ -42,7 +42,14 @@ Alternatively, you can copy the contents of the include folder to your project.
 - The coverage is derived from the [SDL include directory](https://github.com/libsdl-org/SDL/blob/SDL2/include) and categorized according to the [SDL 2.0 API by Category](https://wiki.libsdl.org/SDL2/APIByCategory) documentation.
 - Categories:
   - Basics:
-    - [ ] ~~Assertions (SDL_assert)~~ (Reason: Use standard assertions i.e. `<cassert>` instead.) 
+    - [x] Initialization (SDL.h):
+      - [x] Functions:
+        - [ ] ~~SDL_Init~~ (Reason: Deprecated in favor of SDL_InitSubSystem.)
+        - [x] SDL_InitSubSystem
+        - [x] SDL_QuitSubSystem
+        - [x] SDL_WasInit
+        - [x] SDL_Quit
+    - [ ] ~~Assertions (SDL_assert)~~ (Reason: Use standard assertions i.e. `<cassert>` instead.)
     - [x] Error (SDL_error.h):
       - [x] Enums:
         - [ ] ~~SDL_errorcode~~ (Reason: Internal enum.)
@@ -138,9 +145,10 @@ Alternatively, you can copy the contents of the include folder to your project.
     - [ ] Byte Order and Byte Swapping (SDL_endian.h):
       - [ ] Functions: 
         - [ ] 
-    - [ ] Bit Manipulation (SDL_bits.h):
-      - [ ] Functions: 
-        - [ ] 
+    - [x] Bit Manipulation (SDL_bits.h):
+      - [x] Functions: 
+        - [x] SDL_MostSignificantBitIndex32
+        - [x] SDL_HasExactlyOneBitSet32
   - [x] Power Management (SDL_power.h):
     - [x] Enums:
       - [x] SDL_PowerState

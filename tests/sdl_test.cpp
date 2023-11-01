@@ -3,9 +3,10 @@
 #include <iostream>
 #include <vector>
 
-#include <sdl/core/all.hpp>
-#include <sdl/core/basics/log.hpp>
-#include <sdl/core/platform_cpu_info/cpu_info.hpp>
+#include <sdl/all.hpp>
+#include <sdl/basics/initialization.hpp>
+#include <sdl/basics/log.hpp>
+#include <sdl/platform_cpu_info/cpu_info.hpp>
 
 TEST_CASE("SDL Test")
 {
@@ -97,4 +98,11 @@ TEST_CASE("SDL Test")
   for (auto& value : simd_vector)
     REQUIRE(value == 1);
   simd_vector.clear();
+
+  // Initialization tests.
+
+  sdl::subsystem<sdl::subsystem_type::events>                             events_subsystem;
+  sdl::subsystem<sdl::subsystem_type::audio | sdl::subsystem_type::video> audio_video_subsystem;
+  sdl::subsystem<sdl::subsystem_type::everything>                         all_subsystems; // Calls global `sdl::quit()` on destruction.
+
 }
