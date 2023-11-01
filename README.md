@@ -215,7 +215,7 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [ ] ~~SDL_config_xbox.h~~           (Reason: Nothing to wrap.)
 - [ ] ~~SDL_copying.h~~               (Reason: Nothing to wrap.)
 - [x] SDL_cpuinfo.h
-- [ ] ~~SDL_egl.h~~                   (Reason: Exceeds the context. Use a dedicated EGL wrapper such as [matus-chochlik/eagine-eglplus](https://github.com/matus-chochlik/eagine-eglplus) instead.)
+- [ ] ~~SDL_egl.h~~                   (Reason: Use a dedicated EGL wrapper such as [matus-chochlik/eagine-eglplus](https://github.com/matus-chochlik/eagine-eglplus) instead.)
 - [ ] SDL_endian.h
 - [x] SDL_error.h
 - [ ] SDL_events.h
@@ -239,12 +239,12 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [ ] SDL_mouse.h
 - [ ] SDL_mutex.h
 - [ ] ~~SDL_name.h~~                  (Reason: Nothing to wrap.)
-- [ ] ~~SDL_opengl.h~~                (Reason: Exceeds the context. Use a dedicated OpenGL wrapper such as [acdemiralp/gl](https://github.com/acdemiralp/gl) instead.)
-- [ ] ~~SDL_opengl_glext.h~~          (Reason: Exceeds the context. Use a dedicated OpenGL wrapper such as [acdemiralp/gl](https://github.com/acdemiralp/gl) instead.)
-- [ ] ~~SDL_opengles.h~~              (Reason: Exceeds the context. Use a dedicated OpenGL ES wrapper instead.)
-- [ ] ~~SDL_opengles2.h~~             (Reason: Exceeds the context. Use a dedicated OpenGL ES wrapper instead.)
-- [ ] ~~SDL_opengles2_gl2platform.h~~ (Reason: Exceeds the context. Use a dedicated OpenGL ES wrapper instead.)
-- [ ] ~~SDL_opengles2_khrplatform.h~~ (Reason: Exceeds the context. Use a dedicated OpenGL ES wrapper instead.)
+- [ ] ~~SDL_opengl.h~~                (Reason: Use a dedicated OpenGL wrapper such as [acdemiralp/gl](https://github.com/acdemiralp/gl) instead.)
+- [ ] ~~SDL_opengl_glext.h~~          (Reason: Use a dedicated OpenGL wrapper such as [acdemiralp/gl](https://github.com/acdemiralp/gl) instead.)
+- [ ] ~~SDL_opengles.h~~              (Reason: Use a dedicated OpenGL ES wrapper instead.)
+- [ ] ~~SDL_opengles2.h~~             (Reason: Use a dedicated OpenGL ES wrapper instead.)
+- [ ] ~~SDL_opengles2_gl2platform.h~~ (Reason: Use a dedicated OpenGL ES wrapper instead.)
+- [ ] ~~SDL_opengles2_khrplatform.h~~ (Reason: Use a dedicated OpenGL ES wrapper instead.)
 - [ ] SDL_pixels.h
 - [x] SDL_platform.h
 - [x] SDL_power.h
@@ -261,19 +261,19 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [ ] SDL_surface.h
 - [ ] SDL_system.h
 - [ ] SDL_syswm.h
-- [ ] ~~SDL_test.h~~                  (Reason: SDL2_test is not supported. Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
-- [ ] ~~SDL_test_assert.h~~           (Reason: SDL2_test is not supported. Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
-- [ ] ~~SDL_test_common.h~~           (Reason: SDL2_test is not supported. Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
-- [ ] ~~SDL_test_compare.h~~          (Reason: SDL2_test is not supported. Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
-- [ ] ~~SDL_test_crc32.h~~            (Reason: SDL2_test is not supported. Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
-- [ ] ~~SDL_test_font.h~~             (Reason: SDL2_test is not supported. Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
-- [ ] ~~SDL_test_fuzzer.h~~           (Reason: SDL2_test is not supported. Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
-- [ ] ~~SDL_test_harness.h~~          (Reason: SDL2_test is not supported. Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
-- [ ] ~~SDL_test_images.h~~           (Reason: SDL2_test is not supported. Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
-- [ ] ~~SDL_test_log.h~~              (Reason: SDL2_test is not supported. Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
-- [ ] ~~SDL_test_md5.h~~              (Reason: SDL2_test is not supported. Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
-- [ ] ~~SDL_test_memory.h~~           (Reason: SDL2_test is not supported. Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
-- [ ] ~~SDL_test_random.h~~           (Reason: SDL2_test is not supported. Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
+- [ ] ~~SDL_test.h~~                  (Reason: Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
+- [ ] ~~SDL_test_assert.h~~           (Reason: Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
+- [ ] ~~SDL_test_common.h~~           (Reason: Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
+- [ ] ~~SDL_test_compare.h~~          (Reason: Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
+- [ ] ~~SDL_test_crc32.h~~            (Reason: Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
+- [ ] ~~SDL_test_font.h~~             (Reason: Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
+- [ ] ~~SDL_test_fuzzer.h~~           (Reason: Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
+- [ ] ~~SDL_test_harness.h~~          (Reason: Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
+- [ ] ~~SDL_test_images.h~~           (Reason: Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
+- [ ] ~~SDL_test_log.h~~              (Reason: Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
+- [ ] ~~SDL_test_md5.h~~              (Reason: Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
+- [ ] ~~SDL_test_memory.h~~           (Reason: Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
+- [ ] ~~SDL_test_random.h~~           (Reason: Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
 - [ ] SDL_thread.h
 - [x] SDL_timer.h
 - [ ] SDL_touch.h
