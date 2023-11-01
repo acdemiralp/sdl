@@ -37,6 +37,8 @@ Alternatively, you can copy the contents of the include folder to your project.
   - The order of parameters are identical to the SDL with the following exceptions: 
     - Parameters with default values are moved to the end of the function.
     - Parameters with default values are ordered from the most to least likely to be changed.
+- Design TODOs:
+  - Evaluate each instance of `#ifdef SDL_USE_EXCEPTIONS` and deem if the error is terminal i.e. should throw an exception, or not.
 
 ### Coverage 
 - The coverage is derived from the [SDL include directory](https://github.com/libsdl-org/SDL/blob/SDL2/include) and categorized according to the [SDL 2.0 API by Category](https://wiki.libsdl.org/SDL2/APIByCategory) documentation.
@@ -170,6 +172,20 @@ Alternatively, you can copy the contents of the include folder to your project.
         - [x] SDL_ShowSimpleMessageBox 
     - [ ] Platform-Specific Functionality (SDL_system.h):
     - [ ] Standard Library Functionality (SDL_stdinc.h):
+    - [x] Other Functionality (SDL_guid.h):
+      - [x] Classes / Structs:
+        - [x] SDL_GUID
+      - [x] Functions:
+        - [x] SDL_GUIDToString
+        - [x] SDL_GUIDFromString
+    - [x] Other Functionality (SDL_locale.h):
+      - [x] Classes / Structs:
+        - [x] SDL_Locale
+      - [x] Functions:
+        - [x] SDL_GetPreferredLocales
+    - [x] Other Functionality (SDL_misc.h):
+      - [x] Functions:
+        - [x] SDL_OpenURL
 
 ### Header List (Based on [SDL include directory](https://github.com/libsdl-org/SDL/blob/SDL2/include) on 01.11.2023)
 - [x] SDL.h
@@ -203,7 +219,7 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [ ] SDL_filesystem.h
 - [ ] SDL_gamecontroller.h
 - [ ] SDL_gesture.h
-- [ ] SDL_guid.h
+- [x] SDL_guid.h
 - [ ] SDL_haptic.h
 - [ ] SDL_hidapi.h
 - [ ] SDL_hints.h
@@ -211,15 +227,15 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [ ] SDL_keyboard.h
 - [ ] SDL_keycode.h
 - [x] SDL_loadso.h
-- [ ] SDL_locale.h
+- [x] SDL_locale.h
 - [x] SDL_log.h
 - [ ] SDL_main.h
 - [x] SDL_messagebox.h
 - [ ] SDL_metal.h
-- [ ] SDL_misc.h
+- [x] SDL_misc.h
 - [ ] SDL_mouse.h
 - [ ] SDL_mutex.h
-- [ ] SDL_name.h
+- [ ] ~~SDL_name.h~~
 - [ ] SDL_opengl.h
 - [ ] SDL_opengl_glext.h
 - [ ] SDL_opengles.h
@@ -232,8 +248,8 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [ ] SDL_quit.h
 - [ ] SDL_rect.h
 - [ ] SDL_render.h
-- [ ] SDL_revision.h
-- [ ] SDL_revision.h.cmake
+- [ ] ~~SDL_revision.h~~
+- [ ] ~~SDL_revision.h.cmake~~
 - [ ] SDL_rwops.h
 - [ ] SDL_scancode.h
 - [ ] SDL_sensor.h
@@ -258,7 +274,7 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [ ] SDL_thread.h
 - [x] SDL_timer.h
 - [ ] SDL_touch.h
-- [ ] SDL_types.h
+- [ ] ~~SDL_types.h~~
 - [x] SDL_version.h
 - [ ] SDL_video.h
 - [ ] ~~begin_code.h~~
