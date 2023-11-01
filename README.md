@@ -15,7 +15,7 @@ target_link_libraries([YOUR_PROJECT_NAME] PRIVATE sdl::sdl)
 And then point the `sdl_DIR` to the build or installation directory.
 Alternatively, you can copy the contents of the include folder to your project.
 
-### Usage Notes
+### Usage notes
 - Define `SDL_USE_EXCEPTIONS` to check the return values of all viable functions and throw an exception on failure.
 
 ### Design notes
@@ -41,7 +41,7 @@ Alternatively, you can copy the contents of the include folder to your project.
   - Evaluate each instance of `#ifdef SDL_USE_EXCEPTIONS` and deem if the error is terminal i.e. should throw an exception, or not.
 
 ### Coverage 
-- The coverage is derived from the [SDL include directory](https://github.com/libsdl-org/SDL/blob/SDL2/include) and categorized according to the [SDL 2.0 API by Category](https://wiki.libsdl.org/SDL2/APIByCategory) documentation.
+- The coverage is derived from the [SDL2 include directory](https://github.com/libsdl-org/SDL/blob/SDL2/include) and categorized according to the [SDL 2.0 API by Category](https://wiki.libsdl.org/SDL2/APIByCategory) documentation.
 - Categories:
   - Basics:
     - [x] Initialization (SDL.h):
@@ -187,30 +187,30 @@ Alternatively, you can copy the contents of the include folder to your project.
       - [x] Functions:
         - [x] SDL_OpenURL
 
-### Header List (Based on [SDL include directory](https://github.com/libsdl-org/SDL/blob/SDL2/include) on 01.11.2023)
+### Coverage by headers (Based on [SDL2 include directory](https://github.com/libsdl-org/SDL/blob/SDL2/include) on 01.11.2023)
 - [x] SDL.h
-- [ ] SDL_assert.h
+- [ ] ~~SDL_assert.h~~            (Reason: Use <cassert> instead.)
 - [ ] SDL_atomic.h
 - [ ] SDL_audio.h
 - [x] SDL_bits.h
 - [ ] SDL_blendmode.h
 - [x] SDL_clipboard.h
-- [ ] ~~SDL_config.h~~
-- [ ] ~~SDL_config.h.cmake~~
-- [ ] ~~SDL_config.h.in~~
-- [ ] ~~SDL_config_android.h~~
-- [ ] ~~SDL_config_emscripten.h~~
-- [ ] ~~SDL_config_iphoneos.h~~
-- [ ] ~~SDL_config_macosx.h~~
-- [ ] ~~SDL_config_minimal.h~~
-- [ ] ~~SDL_config_ngage.h~~
-- [ ] ~~SDL_config_os2.h~~
-- [ ] ~~SDL_config_pandora.h~~
-- [ ] ~~SDL_config_windows.h~~
-- [ ] ~~SDL_config_wingdk.h~~
-- [ ] ~~SDL_config_winrt.h~~
-- [ ] ~~SDL_config_xbox.h~~
-- [ ] ~~SDL_copying.h~~
+- [ ] ~~SDL_config.h~~            (Reason: Nothing to wrap.)
+- [ ] ~~SDL_config.h.cmake~~      (Reason: Nothing to wrap.)
+- [ ] ~~SDL_config.h.in~~         (Reason: Nothing to wrap.)
+- [ ] ~~SDL_config_android.h~~    (Reason: Nothing to wrap.)
+- [ ] ~~SDL_config_emscripten.h~~ (Reason: Nothing to wrap.)
+- [ ] ~~SDL_config_iphoneos.h~~   (Reason: Nothing to wrap.)
+- [ ] ~~SDL_config_macosx.h~~     (Reason: Nothing to wrap.)
+- [ ] ~~SDL_config_minimal.h~~    (Reason: Nothing to wrap.)
+- [ ] ~~SDL_config_ngage.h~~      (Reason: Nothing to wrap.)
+- [ ] ~~SDL_config_os2.h~~        (Reason: Nothing to wrap.)
+- [ ] ~~SDL_config_pandora.h~~    (Reason: Nothing to wrap.)
+- [ ] ~~SDL_config_windows.h~~    (Reason: Nothing to wrap.)
+- [ ] ~~SDL_config_wingdk.h~~     (Reason: Nothing to wrap.)
+- [ ] ~~SDL_config_winrt.h~~      (Reason: Nothing to wrap.)
+- [ ] ~~SDL_config_xbox.h~~       (Reason: Nothing to wrap.)
+- [ ] ~~SDL_copying.h~~           (Reason: Nothing to wrap.)
 - [x] SDL_cpuinfo.h
 - [ ] SDL_egl.h
 - [ ] SDL_endian.h
@@ -235,7 +235,7 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [x] SDL_misc.h
 - [ ] SDL_mouse.h
 - [ ] SDL_mutex.h
-- [ ] ~~SDL_name.h~~
+- [ ] ~~SDL_name.h~~              (Reason: Nothing to wrap.)
 - [ ] SDL_opengl.h
 - [ ] SDL_opengl_glext.h
 - [ ] SDL_opengles.h
@@ -248,8 +248,8 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [ ] SDL_quit.h
 - [ ] SDL_rect.h
 - [ ] SDL_render.h
-- [ ] ~~SDL_revision.h~~
-- [ ] ~~SDL_revision.h.cmake~~
+- [ ] ~~SDL_revision.h~~          (Reason: Nothing to wrap.)
+- [ ] ~~SDL_revision.h.cmake~~    (Reason: Nothing to wrap.)
 - [ ] SDL_rwops.h
 - [ ] SDL_scancode.h
 - [ ] SDL_sensor.h
@@ -258,24 +258,24 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [ ] SDL_surface.h
 - [ ] SDL_system.h
 - [ ] SDL_syswm.h
-- [ ] ~~SDL_test.h~~
-- [ ] ~~SDL_test_assert.h~~
-- [ ] ~~SDL_test_common.h~~
-- [ ] ~~SDL_test_compare.h~~
-- [ ] ~~SDL_test_crc32.h~~
-- [ ] ~~SDL_test_font.h~~
-- [ ] ~~SDL_test_fuzzer.h~~
-- [ ] ~~SDL_test_harness.h~~
-- [ ] ~~SDL_test_images.h~~
-- [ ] ~~SDL_test_log.h~~
-- [ ] ~~SDL_test_md5.h~~
-- [ ] ~~SDL_test_memory.h~~
-- [ ] ~~SDL_test_random.h~~
+- [ ] ~~SDL_test.h~~              (Reason: SDL2_test is not supported. Use a dedicated testing library such as [doctest](https://github.com/doctest/doctest) instead.)
+- [ ] ~~SDL_test_assert.h~~       (Reason: SDL2_test is not supported. Use a dedicated testing library such as [doctest](https://github.com/doctest/doctest) instead.)
+- [ ] ~~SDL_test_common.h~~       (Reason: SDL2_test is not supported. Use a dedicated testing library such as [doctest](https://github.com/doctest/doctest) instead.)
+- [ ] ~~SDL_test_compare.h~~      (Reason: SDL2_test is not supported. Use a dedicated testing library such as [doctest](https://github.com/doctest/doctest) instead.)
+- [ ] ~~SDL_test_crc32.h~~        (Reason: SDL2_test is not supported. Use a dedicated testing library such as [doctest](https://github.com/doctest/doctest) instead.)
+- [ ] ~~SDL_test_font.h~~         (Reason: SDL2_test is not supported. Use a dedicated testing library such as [doctest](https://github.com/doctest/doctest) instead.)
+- [ ] ~~SDL_test_fuzzer.h~~       (Reason: SDL2_test is not supported. Use a dedicated testing library such as [doctest](https://github.com/doctest/doctest) instead.)
+- [ ] ~~SDL_test_harness.h~~      (Reason: SDL2_test is not supported. Use a dedicated testing library such as [doctest](https://github.com/doctest/doctest) instead.)
+- [ ] ~~SDL_test_images.h~~       (Reason: SDL2_test is not supported. Use a dedicated testing library such as [doctest](https://github.com/doctest/doctest) instead.)
+- [ ] ~~SDL_test_log.h~~          (Reason: SDL2_test is not supported. Use a dedicated testing library such as [doctest](https://github.com/doctest/doctest) instead.)
+- [ ] ~~SDL_test_md5.h~~          (Reason: SDL2_test is not supported. Use a dedicated testing library such as [doctest](https://github.com/doctest/doctest) instead.)
+- [ ] ~~SDL_test_memory.h~~       (Reason: SDL2_test is not supported. Use a dedicated testing library such as [doctest](https://github.com/doctest/doctest) instead.)
+- [ ] ~~SDL_test_random.h~~       (Reason: SDL2_test is not supported. Use a dedicated testing library such as [doctest](https://github.com/doctest/doctest) instead.)
 - [ ] SDL_thread.h
 - [x] SDL_timer.h
 - [ ] SDL_touch.h
-- [ ] ~~SDL_types.h~~
+- [ ] ~~SDL_types.h~~             (Reason: Nothing to wrap.)
 - [x] SDL_version.h
 - [ ] SDL_video.h
-- [ ] ~~begin_code.h~~
-- [ ] ~~close_code.h~~
+- [ ] ~~begin_code.h~~            (Reason: Nothing to wrap.)
+- [ ] ~~close_code.h~~            (Reason: Nothing to wrap.)
