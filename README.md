@@ -109,7 +109,13 @@ Alternatively, you can copy the contents of the include folder to your project.
       - [x] SDL_RemoveTimer
     - [x] Macros:
       - [ ] ~~SDL_TICKS_PASSED~~ (Reason: Intended to be used with SDL_GetTicks, which is removed.)
-  - File Abstraction:
+  - [ ] File Abstraction:
+    - [x] Filesystem (SDL_filesystem.h):
+      - [x] Functions:
+        - [x] SDL_GetBasePath
+        - [x] SDL_GetPrefPath 
+    - [ ] RWops (SDL_rwops.h):
+      - [ ] 
   - [x] Shared Object Support (SDL_loadso.h):
     - [x] Functions:
       - [x] SDL_LoadObject 
@@ -192,7 +198,7 @@ Alternatively, you can copy the contents of the include folder to your project.
 
 ### Coverage by headers (Based on [SDL2 include directory](https://github.com/libsdl-org/SDL/blob/SDL2/include) on 01.11.2023)
 - [x] SDL.h
-- [ ] ~~SDL_assert.h~~                (Reason: Use <cassert> instead.)
+- [ ] ~~SDL_assert.h~~                (Reason: Use `<cassert>` instead.)
 - [ ] SDL_atomic.h
 - [ ] SDL_audio.h
 - [x] SDL_bits.h
@@ -219,7 +225,7 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [ ] SDL_endian.h
 - [x] SDL_error.h
 - [ ] SDL_events.h
-- [ ] SDL_filesystem.h
+- [x] SDL_filesystem.h
 - [ ] SDL_gamecontroller.h
 - [ ] SDL_gesture.h
 - [x] SDL_guid.h
