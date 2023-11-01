@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include <SDL2/SDL_version.h>
+#include <SDL_version.h>
 
 namespace sdl
 {

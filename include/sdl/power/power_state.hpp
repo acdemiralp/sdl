@@ -1,6 +1,6 @@
 #pragma once
 
-#include <SDL2/SDL_power.h>
+#include <SDL_power.h>
 
 namespace sdl
 {

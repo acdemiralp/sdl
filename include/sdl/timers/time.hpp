@@ -3,7 +3,7 @@
 #include <chrono>
 #include <cstdint>
 
-#include <SDL2/SDL_timer.h>
+#include <SDL_timer.h>
 
 namespace sdl::time
 {

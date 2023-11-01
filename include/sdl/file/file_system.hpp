@@ -3,7 +3,7 @@
 #include <stdexcept>
 #include <string>
 
-#include <SDL2/SDL_filesystem.h>
+#include <SDL_filesystem.h>
 
 #include <sdl/basics/error.hpp>
 

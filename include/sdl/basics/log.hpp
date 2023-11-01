@@ -5,7 +5,7 @@
 #include <functional>
 #include <string>
 
-#include <SDL2/SDL_log.h>
+#include <SDL_log.h>
 
 namespace sdl
 {

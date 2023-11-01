@@ -5,7 +5,7 @@
 #include <string>
 #include <type_traits>
 
-#include <SDL2/SDL_loadso.h>
+#include <SDL_loadso.h>
 
 #include <sdl/basics/error.hpp>
 

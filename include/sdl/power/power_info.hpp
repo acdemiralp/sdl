@@ -3,7 +3,7 @@
 #include <chrono>
 #include <cstdint>
 
-#include <SDL2/SDL_power.h>
+#include <SDL_power.h>
 
 #include <sdl/power/power_state.hpp>
 

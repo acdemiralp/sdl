@@ -6,7 +6,7 @@
 #include <stdexcept>
 #include <utility>
 
-#include <SDL2/SDL_timer.h>
+#include <SDL_timer.h>
 
 #include <sdl/basics/error.hpp>
 

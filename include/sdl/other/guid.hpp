@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <string>
 
-#include <SDL2/SDL_guid.h>
+#include <SDL_guid.h>
 
 namespace sdl
 {

@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-#include <SDL2/SDL_bits.h>
+#include <SDL_bits.h>
 
 namespace sdl
 {

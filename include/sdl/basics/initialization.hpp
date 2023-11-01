@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include <type_traits>
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 #include <sdl/basics/error.hpp>
 #include <sdl/utility/bitset_enum.hpp>

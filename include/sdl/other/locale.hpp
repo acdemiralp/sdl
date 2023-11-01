@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include <SDL2/SDL_locale.h>
+#include <SDL_locale.h>
 
 #include <sdl/basics/error.hpp>
 
