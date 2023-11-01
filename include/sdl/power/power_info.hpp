@@ -5,7 +5,7 @@
 
 #include <SDL2/SDL_power.h>
 
-#include <sdl/core/power/power_state.hpp>
+#include <sdl/power/power_state.hpp>
 
 namespace sdl
 {

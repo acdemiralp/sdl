@@ -8,7 +8,7 @@
 
 #include <SDL2/SDL_timer.h>
 
-#include <sdl/core/basics/error.hpp>
+#include <sdl/basics/error.hpp>
 
 namespace sdl::time
 {

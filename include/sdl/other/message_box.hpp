@@ -9,8 +9,8 @@
 
 #include <SDL_messagebox.h>
 
-#include <sdl/core/basics/error.hpp>
-#include <sdl/core/video/window.hpp>
+#include <sdl/basics/error.hpp>
+#include <sdl/video/window.hpp>
 
 namespace sdl
 {

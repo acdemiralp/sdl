@@ -5,7 +5,7 @@
 
 #include <SDL_clipboard.h>
 
-#include <sdl/core/basics/error.hpp>
+#include <sdl/basics/error.hpp>
 
 namespace sdl
 {

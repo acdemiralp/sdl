@@ -7,7 +7,7 @@
 
 #include <SDL2/SDL_loadso.h>
 
-#include <sdl/core/basics/error.hpp>
+#include <sdl/basics/error.hpp>
 
 namespace sdl
 {
