@@ -83,10 +83,22 @@ Alternatively, you can copy the contents of the include folder to your project.
         - [x] SDL_LogGetOutputFunction
         - [x] SDL_LogSetOutputFunction
     - [x] Version (SDL_version.h):
+      - [x] Macros:
+        - [x] SDL_MAJOR_VERSION
+        - [x] SDL_MINOR_VERSION
+        - [x] SDL_PATCHLEVEL
+        - [ ] ~~SDL_VERSIONNUM~~ (Reason: Deprecated in favor of SDL_VERSION).
+        - [ ] ~~SDL_COMPILEDVERSION~~ (Reason: Deprecated in favor of SDL_VERSION).
+        - [x] SDL_VERSION
+        - [x] SDL_VERSION_ATLEAST
       - [x] Functions:
         - [x] SDL_GetVersion
         - [x] SDL_GetRevision
         - [ ] ~~SDL_GetRevisionNumber~~ (Reason: Deprecated in favor of SDL_GetRevision.)
+    - [x] Revision (SDL_revision.h):
+      - [x] Macros:
+        - [x] SDL_REVISION 
+        - [ ] ~~SDL_REVISION_NUMBER~~ (Reason: Deprecated in favor of SDL_REVISION.)
   - Video:
     - [x] Clipboard (SDL_clipboard.h):
       - [x] SDL_GetClipboardText
@@ -268,7 +280,7 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [x] SDL_quit.h
 - [ ] SDL_rect.h
 - [ ] SDL_render.h
-- [ ] ~~SDL_revision.h~~              (Reason: Nothing to wrap.)
+- [x] SDL_revision.h
 - [ ] ~~SDL_revision.h.cmake~~        (Reason: Nothing to wrap.)
 - [ ] SDL_rwops.h
 - [ ] SDL_scancode.h
