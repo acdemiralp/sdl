@@ -99,14 +99,34 @@ Alternatively, you can copy the contents of the include folder to your project.
       - [x] Macros:
         - [x] SDL_REVISION 
         - [ ] ~~SDL_REVISION_NUMBER~~ (Reason: Deprecated in favor of SDL_REVISION.)
-  - Video:
+  - [ ] Video:
     - [x] Clipboard (SDL_clipboard.h):
-      - [x] SDL_GetClipboardText
-      - [x] SDL_SetClipboardText
-      - [x] SDL_HasClipboardText
-      - [x] SDL_GetPrimarySelectionText
-      - [x] SDL_SetPrimarySelectionText
-      - [x] SDL_HasPrimarySelectionText
+      - [x] Functions:
+        - [x] SDL_GetClipboardText
+        - [x] SDL_SetClipboardText
+        - [x] SDL_HasClipboardText
+        - [x] SDL_GetPrimarySelectionText
+        - [x] SDL_SetPrimarySelectionText
+        - [x] SDL_HasPrimarySelectionText
+    - [x] Platform-specific window management (SDL_syswm.h):
+      - [x] Enums:
+        - [x] SDL_SYSWM_TYPE
+      - [x] Classes / Structs:
+        - [x] SDL_SysWMmsg
+        - [x] SDL_SysWMinfo
+      - [x] Functions:
+        - [x] SDL_GetWindowWMInfo
+    - [x] Vulkan (SDL_vulkan.h):
+      - [x] Classes / Structs:
+        - [x] SDL_vulkanInstance
+        - [x] SDL_vulkanSurface
+      - [x] Functions:
+        - [x] SDL_Vulkan_LoadLibrary
+        - [x] SDL_Vulkan_UnloadLibrary
+        - [x] SDL_Vulkan_GetVkGetInstanceProcAddr
+        - [x] SDL_Vulkan_GetInstanceExtensions
+        - [x] SDL_Vulkan_CreateSurface
+        - [x] SDL_Vulkan_GetDrawableSize
   - Input Events:
   - Force Feedback:
   - Audio:
@@ -289,7 +309,7 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [ ] SDL_stdinc.h
 - [ ] SDL_surface.h
 - [ ] SDL_system.h
-- [ ] SDL_syswm.h
+- [x] SDL_syswm.h
 - [ ] ~~SDL_test.h~~                  (Reason: Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
 - [ ] ~~SDL_test_assert.h~~           (Reason: Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
 - [ ] ~~SDL_test_common.h~~           (Reason: Use a dedicated testing library such as [onqtam/doctest](https://github.com/doctest/doctest) instead.)
@@ -309,5 +329,6 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [ ] ~~SDL_types.h~~                 (Reason: Nothing to wrap.)
 - [x] SDL_version.h
 - [ ] SDL_video.h
+- [x] SDL_vulkan.h
 - [ ] ~~begin_code.h~~                (Reason: Nothing to wrap.)
 - [ ] ~~close_code.h~~                (Reason: Nothing to wrap.)
