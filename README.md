@@ -37,6 +37,7 @@ Alternatively, you can copy the contents of the include folder to your project.
   - The order of parameters are identical to the SDL with the following exceptions: 
     - Parameters with default values are moved to the end of the function.
     - Parameters with default values are ordered from the most to least likely to be changed.
+  - Any component which has an equally capable C++ standard library or de facto standard alternative is not wrapped.
 - Design TODOs:
   - Evaluate each instance of `#ifdef SDL_USE_EXCEPTIONS` and deem if the error is terminal i.e. should throw an exception, or not.
 
@@ -195,6 +196,16 @@ Alternatively, you can copy the contents of the include folder to your project.
     - [x] Other Functionality (SDL_quit.h):
       - [x] Functions:
         - [x] SDL_QuitRequested
+    - [x] Other Functionality (SDL_main.h):
+      - [x] Functions:
+        - [x] SDL_main
+        - [x] SDL_SetMainReady
+        - [x] SDL_RegisterApp
+        - [x] SDL_UnregisterApp
+        - [x] SDL_WinRTRunApp
+        - [x] SDL_UIKitRunApp
+        - [x] SDL_GDKRunApp
+        - [x] SDL_GDKSuspendComplete
 
 ### Coverage by headers (Based on [SDL2 include directory](https://github.com/libsdl-org/SDL/blob/SDL2/include) on 01.11.2023)
 - [x] SDL.h
@@ -238,7 +249,7 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [x] SDL_loadso.h
 - [x] SDL_locale.h
 - [x] SDL_log.h
-- [ ] SDL_main.h
+- [x] SDL_main.h
 - [x] SDL_messagebox.h
 - [ ] SDL_metal.h
 - [x] SDL_misc.h
