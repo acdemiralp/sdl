@@ -4,7 +4,7 @@ project               (sdl VERSION 1.0 LANGUAGES CXX)
 list                  (APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 set_property          (GLOBAL PROPERTY USE_FOLDERS ON)
 set                   (CMAKE_BUILD_TYPE Release)
-set                   (CMAKE_CXX_STANDARD 20)
+set                   (CMAKE_CXX_STANDARD 23)
 
 if   (MSVC)
   add_compile_options (/W4)
@@ -14,11 +14,6 @@ endif()
 
 ##################################################    Options     ##################################################
 option(SDL_BUILD_TESTS "Build tests." OFF)
-option(SDL_USE_EXCEPTIONS "Use exceptions." OFF)
-
-if    (SDL_USE_EXCEPTIONS)
-  list(APPEND PROJECT_COMPILE_DEFINITIONS -DSDL_USE_EXCEPTIONS)
-endif ()
 
 ##################################################    Sources     ##################################################
 file(GLOB_RECURSE PROJECT_HEADERS include/*.hpp)
@@ -51,7 +46,6 @@ target_include_directories(${PROJECT_NAME} INTERFACE
   $<INSTALL_INTERFACE:include>)
 target_include_directories(${PROJECT_NAME} INTERFACE ${PROJECT_INCLUDE_DIRS})
 target_link_libraries     (${PROJECT_NAME} INTERFACE ${PROJECT_LIBRARIES})
-target_compile_definitions(${PROJECT_NAME} INTERFACE ${PROJECT_COMPILE_DEFINITIONS})
 
 # Hack for header-only project to appear in the IDEs.
 add_library(${PROJECT_NAME}_ STATIC ${PROJECT_FILES})
@@ -60,7 +54,6 @@ target_include_directories(${PROJECT_NAME}_ PUBLIC
   ${CMAKE_CURRENT_BINARY_DIR})     
 target_include_directories(${PROJECT_NAME}_ PUBLIC ${PROJECT_INCLUDE_DIRS})
 target_link_libraries     (${PROJECT_NAME}_ PUBLIC ${PROJECT_LIBRARIES})
-target_compile_definitions(${PROJECT_NAME}_ PUBLIC ${PROJECT_COMPILE_DEFINITIONS})
 set_target_properties     (${PROJECT_NAME}_ PROPERTIES LINKER_LANGUAGE CXX)
 
 ##################################################    Testing     ##################################################

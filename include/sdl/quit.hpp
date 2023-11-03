@@ -5,6 +5,7 @@
 
 namespace sdl
 {
+[[nodiscard]]
 inline bool quit_requested()
 {
   return SDL_QuitRequested();

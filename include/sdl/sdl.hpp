@@ -1,13 +1,14 @@
 #pragma once
 
 #include <cstdint>
-#include <stdexcept>
+#include <expected>
+#include <string>
 #include <type_traits>
 
 #include <SDL.h>
 
-#include <sdl/basics/error.hpp>
-#include <sdl/utility/bitset_enum.hpp>
+#include <sdl/bitset_enum.hpp>
+#include <sdl/error.hpp>
 
 namespace sdl
 {
@@ -21,30 +22,38 @@ enum class subsystem_type : std::uint32_t
   game_controller = SDL_INIT_GAMECONTROLLER,
   events          = SDL_INIT_EVENTS        ,
   sensor          = SDL_INIT_SENSOR        ,
+  no_parachute    = SDL_INIT_NOPARACHUTE   , // Deprecated.
   everything      = SDL_INIT_EVERYTHING
 };
 
 template <>
 struct is_bitset_enum<subsystem_type> : std::true_type {};
 
-inline bool is_initialized      (const subsystem_type subsystem)
+[[nodiscard]]
+inline bool                             is_initialized      (const subsystem_type subsystem)
 {
   return SDL_WasInit(static_cast<std::uint32_t>(subsystem)) == static_cast<std::uint32_t>(subsystem);
 }
-inline void initialize_subsystem(const subsystem_type subsystem)
+// Bad practice: You should use `sdl::initialize_subsystem(const subsystem_type)` instead.
+[[deprecated]]
+inline std::expected<void, std::string> initialize          (const subsystem_type subsystem)
 {
-  const auto result = SDL_InitSubSystem(static_cast<std::uint32_t>(subsystem));
-#ifdef SDL_USE_EXCEPTIONS
-  if (result < 0)
-    throw std::runtime_error(get_error());
-#endif
+  if (SDL_Init(static_cast<std::uint32_t>(subsystem)) < 0)
+    return std::unexpected(get_error());
+  return {};
+}
+inline std::expected<void, std::string> initialize_subsystem(const subsystem_type subsystem)
+{
+  if (SDL_InitSubSystem(static_cast<std::uint32_t>(subsystem)) < 0)
+    return std::unexpected(get_error());
+  return {};
 }
 // Warning: You should still call `sdl::quit()` even if you quit each subsystem individually.
-inline void quit_subsystem      (const subsystem_type subsystem)
+inline void                             quit_subsystem      (const subsystem_type subsystem)
 {
   SDL_QuitSubSystem(static_cast<std::uint32_t>(subsystem));
 }
-inline void quit                ()
+inline void                             quit                ()
 {
   SDL_Quit();
 }
@@ -95,5 +104,5 @@ using haptic_subsystem          = subsystem<subsystem_type::haptic>;
 using game_controller_subsystem = subsystem<subsystem_type::game_controller>;
 using events_subsystem          = subsystem<subsystem_type::events>;
 using sensor_subsystem          = subsystem<subsystem_type::sensor>;
-using all_subsystems            = subsystem<subsystem_type::everything>;
+using every_subsystem           = subsystem<subsystem_type::everything>;
 }

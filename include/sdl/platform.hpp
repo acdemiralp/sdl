@@ -6,6 +6,14 @@
 
 namespace sdl
 {
+[[nodiscard]]
+inline std::string get_platform_string()
+{
+  return SDL_GetPlatform();
+}
+
+// Conveniences.
+
 enum class platform
 {
   aix                 ,
@@ -44,10 +52,7 @@ enum class platform
   unknown
 };
 
-inline std::string get_platform_string()
-{
-  return SDL_GetPlatform();
-}
+[[nodiscard]]
 inline platform    get_platform       ()
 {
   const auto string = get_platform_string();
