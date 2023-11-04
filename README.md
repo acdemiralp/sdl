@@ -36,7 +36,7 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [ ] SDL_atomic.h
 - [ ] SDL_audio.h
 - [x] SDL_bits.h
-- [ ] SDL_blendmode.h
+- [x] SDL_blendmode.h
 - [x] SDL_clipboard.h
 - [ ] ~~SDL_config.h~~                (Reason: Nothing to wrap.)
 - [ ] ~~SDL_config.h.cmake~~          (Reason: Nothing to wrap.)
