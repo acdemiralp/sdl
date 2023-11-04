@@ -74,7 +74,7 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [x] SDL_log.h
 - [x] SDL_main.h
 - [x] SDL_messagebox.h
-- [ ] SDL_metal.h
+- [x] SDL_metal.h
 - [x] SDL_misc.h
 - [ ] SDL_mouse.h
 - [ ] SDL_mutex.h
