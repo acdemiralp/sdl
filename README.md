@@ -56,7 +56,7 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [ ] ~~SDL_copying.h~~               (Reason: Nothing to wrap.)
 - [x] SDL_cpuinfo.h
 - [ ] ~~SDL_egl.h~~                   (Reason: Use a dedicated EGL wrapper such as [matus-chochlik/eagine-eglplus](https://github.com/matus-chochlik/eagine-eglplus) instead.)
-- [ ] SDL_endian.h
+- [x] SDL_endian.h
 - [x] SDL_error.h
 - [ ] SDL_events.h
 - [x] SDL_filesystem.h
