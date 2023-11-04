@@ -7,7 +7,7 @@
 
 #include <sdl/error.hpp>
 #include <sdl/version.hpp>
-#include <sdl/window.hpp>
+#include <sdl/video.hpp>
 
 namespace sdl
 {

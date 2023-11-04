@@ -57,27 +57,21 @@ std::expected<std::function<signature_type>, std::string> load_function_as_objec
 class shared_object
 {
 public:
-  // Bad practice: The constructor cannot transmit error state. You should use `sdl::make_shared_object(const std::string&)` instead.
+  // The constructor cannot transmit error state. You should use `sdl::make_shared_object(const std::string&)` to handle errors.
   explicit shared_object  (const std::string& file)
-  : native_(SDL_LoadObject(file.c_str())), managed_(true)
+  : native_(SDL_LoadObject(file.c_str()))
   {
 
   }
-  explicit shared_object  (void* native, const bool managed)
-  : native_(native), managed_(managed)
-  {
-    
-  }
   shared_object           (const shared_object&  that) = delete;
   shared_object           (      shared_object&& temp) noexcept
-  : native_(temp.native_), managed_(temp.managed_)
+  : native_(temp.native_)
   {
-    temp.native_  = nullptr;
-    temp.managed_ = false;
+    temp.native_ = nullptr;
   }
  ~shared_object           ()
   {
-    if (native_ && managed_)
+    if (native_)
       unload_object(native_);
   }
   shared_object& operator=(const shared_object&  that) = delete;
@@ -85,13 +79,11 @@ public:
   {
     if (this != &temp)
     {
-      if (native_ && managed_)
+      if (native_)
         unload_object(native_);
 
-      native_       = temp.native_;
-      managed_      = temp.managed_;
-      temp.native_  = nullptr;
-      temp.managed_ = false;
+      native_      = temp.native_;
+      temp.native_ = nullptr;
     }
     return *this;
   }
@@ -117,23 +109,17 @@ public:
   {
     return native_;
   }
-  [[nodiscard]]
-  bool                                                      managed                () const
-  {
-    return managed_;
-  }
 
 private:
-  void* native_  {};
-  bool  managed_ {};
+  void* native_ {};
 };
 
 [[nodiscard]]
 inline std::expected<shared_object, std::string>          make_shared_object     (const std::string& file)
 {
-  void* native = SDL_LoadObject(file.c_str());
-  if  (!native)
+  shared_object result(file);
+  if (!result.native())
     return std::unexpected(get_error());
-  return shared_object(native, true);
+  return result;
 }
 }

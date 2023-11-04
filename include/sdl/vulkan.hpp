@@ -9,7 +9,7 @@
 #include <SDL_vulkan.h>
 
 #include <sdl/error.hpp>
-#include <sdl/window.hpp>
+#include <sdl/video.hpp>
 
 namespace sdl
 {

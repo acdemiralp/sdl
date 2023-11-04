@@ -19,9 +19,6 @@ Alternatively, you can copy the contents of the include folder to your project.
 - Constructors:
   - Copy constructors are deleted unless SDL provides copy functions for the object.
   - Move constructors are available whenever possible.
-  - The object wrappers have the capability to both:
-    - Construct a  new      SDL object, and be           responsible for its destruction.
-    - Accept    an existing SDL object, and be or not be responsible for its destruction.
 - Structures:
   - Structs are for POD data types. They may only contain member variables, constructors, destructors and assignment operators.
 - Functions:

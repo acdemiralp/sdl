@@ -10,7 +10,7 @@
 namespace sdl
 {
 [[deprecated]]
-inline constexpr std::uint32_t max_log_message_size = SDL_MAX_LOG_MESSAGE;
+inline constexpr std::int32_t max_log_message_size = SDL_MAX_LOG_MESSAGE;
 
 enum class log_category
 {
