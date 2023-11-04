@@ -136,7 +136,7 @@ enum class scan_code
   volume_up                    = SDL_SCANCODE_VOLUMEUP,
   volume_down                  = SDL_SCANCODE_VOLUMEDOWN,
   keypad_comma                 = SDL_SCANCODE_KP_COMMA,
-  keypad_equals_as400          = SDL_SCANCODE_KP_EQUALSAS400,
+  keypad_equals_as_400         = SDL_SCANCODE_KP_EQUALSAS400,
   international_1              = SDL_SCANCODE_INTERNATIONAL1,
   international_2              = SDL_SCANCODE_INTERNATIONAL2,
   international_3              = SDL_SCANCODE_INTERNATIONAL3,
