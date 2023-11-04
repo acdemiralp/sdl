@@ -61,7 +61,7 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [ ] SDL_events.h
 - [x] SDL_filesystem.h
 - [ ] SDL_gamecontroller.h
-- [ ] SDL_gesture.h
+- [x] SDL_gesture.h
 - [x] SDL_guid.h
 - [ ] SDL_haptic.h
 - [ ] SDL_hidapi.h

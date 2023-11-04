@@ -8,6 +8,8 @@
 #include <SDL_touch.h>
 
 #include <sdl/error.hpp>
+#include <sdl/gesture.hpp>
+#include <sdl/rwops.hpp>
 
 namespace sdl
 {
@@ -85,27 +87,27 @@ public:
   touch_device& operator=(      touch_device&& temp) = default;
 
   [[nodiscard]]
-  std::expected<std::string      , std::string> name        () const
+  std::expected<std::string      , std::string> name                 () const
   {
     return get_touch_device_name(index_);
   }
   [[nodiscard]]
-  std::expected<touch_device_type, std::string> type        () const
+  std::expected<touch_device_type, std::string> type                 () const
   {
     return get_touch_device_type(native_);
   }
   [[nodiscard]]
-  std::expected<std::int32_t     , std::string> finger_count() const
+  std::expected<std::int32_t     , std::string> finger_count         () const
   {
     return get_num_touch_fingers(native_);
   }
   [[nodiscard]]
-  sdl::finger*                                  finger      (const std::int32_t finger_index = 0) const
+  sdl::finger*                                  finger               (const std::int32_t finger_index = 0) const
   {
-    return get_touch_finger     (native_, finger_index);
+    return get_touch_finger(native_, finger_index);
   }
   [[nodiscard]]
-  std::vector<sdl::finger*>                     fingers     () const
+  std::vector<sdl::finger*>                     fingers              () const
   {
     const auto count = finger_count();
     if (!count)
@@ -118,13 +120,28 @@ public:
     return result;
   }
 
+  // Gesture conveniences.
+
+  [[deprecated]]
+  std::expected<void             , std::string> record_gesture       () const
+  {
+    return sdl::record_gesture(native_);
+  }
+  [[deprecated, nodiscard]]
+  std::expected<std::int32_t     , std::string> load_dollar_templates(const rw_ops& source) const
+  {
+    return sdl::load_dollar_templates(native_, source);
+  }
+
+  // Accessors.
+
   [[nodiscard]]
-  std::int32_t                                  index       () const
+  std::int32_t                                  index                () const
   {
     return index_;
   }
   [[nodiscard]]
-  std::int64_t                                  native      () const
+  std::int64_t                                  native               () const
   {
     return native_;
   }
