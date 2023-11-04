@@ -116,7 +116,7 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [ ] ~~SDL_test_random.h~~           (Reason: Use a dedicated testing library instead.)
 - [ ] SDL_thread.h
 - [x] SDL_timer.h
-- [ ] SDL_touch.h
+- [x] SDL_touch.h
 - [ ] ~~SDL_types.h~~                 (Reason: Nothing to wrap.)
 - [x] SDL_version.h
 - [ ] SDL_video.h
