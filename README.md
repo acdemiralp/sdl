@@ -1,5 +1,5 @@
 ## SDL
-Header-only C++23 wrapper for SDL 2.28.4+.
+Header-only C++23 wrapper for SDL 2.28.
 
 ### Building the tests
 - Run `bootstrap.[bat|sh]`. This will install doctest + sdl, and create the project under the `./build` directory.
@@ -16,17 +16,13 @@ And then point the `sdl_DIR` to the build or installation directory.
 Alternatively, you can copy the contents of the include folder to your project.
 
 ### Design notes
-- Constructors:
-  - Copy constructors are deleted unless SDL provides copy functions for the object.
-  - Move constructors are available whenever possible.
-- Structures:
-  - Structs are for POD data types. They may only contain member variables, constructors, destructors and assignment operators.
 - Functions:
   - The order of parameters are identical to the SDL with the following exception: 
     - Parameters with default values are moved to the end of the function, and are ordered from the most to least likely to be changed.
 - Error Handling:
-  - Error handling is performed if the documentation of the native function specifies an error state.
+  - This library does not throw exceptions, except for the exceptions thrown due to standard library usage.
   - Errors are propagated to the caller using `std::expected<T, std::string>`, the unexpected state containing the result of `sdl::error()`.
+  - Error handling is performed if the documentation of the native function specifies an error state.
 - Versioning:
   - The major, minor and patch version are identical to the supported version of SDL.
 
@@ -95,7 +91,7 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [ ] ~~SDL_revision.h.cmake~~        (Reason: Nothing to wrap.)
 - [ ] SDL_rwops.h
 - [x] SDL_scancode.h
-- [ ] SDL_sensor.h
+- [x] SDL_sensor.h
 - [ ] SDL_shape.h
 - [ ] SDL_stdinc.h
 - [ ] SDL_surface.h
@@ -123,3 +119,16 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [x] SDL_vulkan.h
 - [ ] ~~begin_code.h~~                (Reason: Nothing to wrap.)
 - [ ] ~~close_code.h~~                (Reason: Nothing to wrap.)
+
+### Future work
+- Evaluate each use of `std::expected<type, std::string>` and determine if it should be replaced with a `type` with invalid content.
+- Examples and higher-level abstractions:
+  - In particular, a micro application engine consisting of the following abstractions, gathering the content of SDL into several `system` monoliths:
+    - `engine`
+    - `system`
+      - `audio_system`
+      - `display_system`
+      - `input_system`
+      - `rendering_system` 
+      - `time_system`
+- Tests.

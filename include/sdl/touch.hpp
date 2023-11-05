@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstddef>
 #include <cstdint>
 #include <expected>
 #include <string>
@@ -165,7 +166,7 @@ inline std::vector<touch_device>                     get_touch_devices    ()
   const auto count = get_num_touch_devices();
 
   std::vector<touch_device> result;
-  result.reserve(count);
+  result.reserve(static_cast<std::size_t>(count));
   for (auto i = 0; i < count; ++i)
     result.emplace_back(i);
   return result;
