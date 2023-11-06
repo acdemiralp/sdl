@@ -122,6 +122,7 @@ Alternatively, you can copy the contents of the include folder to your project.
 
 ### Future work
 - Evaluate each use of `std::expected<type, std::string>` and determine if it should be replaced with a `type` with invalid content.
+- Consider a detail namespace or separate namespaces for headers to reduce and organize the information presented by intellisense.
 - Examples and higher-level abstractions:
   - In particular, a micro application engine consisting of the following abstractions, gathering the content of SDL into several `system` monoliths:
     - `engine`
