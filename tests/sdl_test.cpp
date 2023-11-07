@@ -1,10 +1,9 @@
 #include <doctest/doctest.h>
 #include <sdl/all.hpp>
 
+#include <sdl/atomic.hpp>
 #include <sdl/mouse.hpp>
 #include <sdl/sdl.hpp>
-
-#include "sdl/timer.hpp"
 
 TEST_CASE("SDL Test")
 {
@@ -29,6 +28,14 @@ TEST_CASE("SDL Test")
     "1111000011110000"
   ), {16, 16}, {0, 0});
   cursor.set_current();
+
+  sdl::atomic_int      atomic_number (32);
+  atomic_number += 32;
+
+  std::int32_t         number        (32);
+  sdl::atomic_ptr<int> atomic_pointer(nullptr);
+  atomic_pointer.store(&number);
+  atomic_pointer.load ();
 
   const auto window = SDL_CreateWindow("Test", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, SDL_WINDOW_SHOWN);
   bool       quit   = false;
