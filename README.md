@@ -26,7 +26,7 @@ Alternatively, you can copy the contents of the include folder to your project.
 - Versioning:
   - The major, minor and patch version are identical to the supported version of SDL.
 
-### Coverage by headers (Based on [SDL2 include directory](https://github.com/libsdl-org/SDL/blob/SDL2/include) on 01.11.2023)
+### Coverage by headers
 - [x] SDL.h
 - [ ] ~~SDL_assert.h~~                (Reason: Use `<cassert>` instead.)
 - [ ] SDL_atomic.h
@@ -72,7 +72,7 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [x] SDL_messagebox.h
 - [x] SDL_metal.h
 - [x] SDL_misc.h
-- [ ] SDL_mouse.h
+- [x] SDL_mouse.h
 - [ ] SDL_mutex.h
 - [ ] ~~SDL_name.h~~                  (Reason: Nothing to wrap.)
 - [ ] ~~SDL_opengl.h~~                (Reason: Use a dedicated OpenGL wrapper such as [acdemiralp/gl](https://github.com/acdemiralp/gl) instead.)
@@ -92,7 +92,7 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [ ] SDL_rwops.h
 - [x] SDL_scancode.h
 - [x] SDL_sensor.h
-- [ ] SDL_shape.h
+- [x] SDL_shape.h
 - [ ] SDL_stdinc.h
 - [ ] SDL_surface.h
 - [ ] SDL_system.h

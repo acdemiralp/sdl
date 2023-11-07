@@ -21,6 +21,13 @@ class window
 public:
   // Conveniences.
 
+  // Conveniences from mouse.hpp.
+
+  [[nodiscard]]
+  static window                                 with_mouse_focus      ();
+
+  void                                          warp_mouse            (const std::array<std::int32_t, 2>& position) const;
+
   // Conveniences from shape.hpp.
 
   // The constructor cannot transmit error state. You should use `sdl::make_shaped_window(...)` to handle errors.
@@ -44,8 +51,15 @@ public:
     return native_;
   }
 
-protected:
-  SDL_Window* native_ {};
+private:
+  window(SDL_Window* native, const bool managed)
+  : native_(native), managed_(managed)
+  {
+    
+  }
+
+  SDL_Window* native_  {};
+  bool        managed_ {true};
 };
 
 [[nodiscard]]
