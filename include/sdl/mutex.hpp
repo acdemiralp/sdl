@@ -154,7 +154,7 @@ class mutex
 public:
   // The constructor cannot transmit error state. You should use `sdl::make_mutex()` to handle errors.
   mutex           ()
-  : native_(create_mutex().value())
+  : native_(create_mutex().value_or(nullptr))
   {
     
   }
@@ -213,7 +213,7 @@ class semaphore
 public:
   // The constructor cannot transmit error state. You should use `sdl::make_semaphore(std::uint32_t)` to handle errors.
   explicit semaphore  (const std::uint32_t initial_value)
-  : native_(create_semaphore(initial_value).value())
+  : native_(create_semaphore(initial_value).value_or(nullptr))
   {
     
   }
@@ -282,7 +282,7 @@ class condition_variable
 public:
   // The constructor cannot transmit error state. You should use `sdl::make_condition_variable()` to handle errors.
   condition_variable           ()
-  : native_(create_cond().value())
+  : native_(create_cond().value_or(nullptr))
   {
     
   }

@@ -2,8 +2,10 @@
 #include <sdl/all.hpp>
 
 #include <sdl/atomic.hpp>
+#include <sdl/log.hpp>
 #include <sdl/mouse.hpp>
 #include <sdl/sdl.hpp>
+#include <sdl/timer.hpp>
 
 TEST_CASE("SDL Test")
 {
@@ -37,6 +39,8 @@ TEST_CASE("SDL Test")
   atomic_pointer.store(&number);
   atomic_pointer.load ();
 
+  auto timer = sdl::make_timer(std::chrono::milliseconds(1000), [&] () { sdl::log_warn(sdl::log_category::application, std::string("Timer is up.")); }, true).value_or(nullptr);
+  
   const auto window = SDL_CreateWindow("Test", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, SDL_WINDOW_SHOWN);
   bool       quit   = false;
   SDL_Event  event;
