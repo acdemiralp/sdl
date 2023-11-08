@@ -96,18 +96,18 @@ public:
   timer& operator=(      timer&& temp) = delete;
 
   [[nodiscard]]
-  const std::function<void()>& callback          () const
+  const std::function<void()>& callback() const
   {
     return callback_;
   }
   [[nodiscard]]
-  bool                         repeat            () const
+  bool                         repeat  () const
   {
     return repeat_;
   }
 
   [[nodiscard]]
-  std::int32_t                 native            () const
+  std::int32_t                 native  () const
   {
     return native_;
   }
