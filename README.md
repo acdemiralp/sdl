@@ -73,7 +73,7 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [x] SDL_metal.h
 - [x] SDL_misc.h
 - [x] SDL_mouse.h
-- [ ] SDL_mutex.h
+- [x] SDL_mutex.h
 - [ ] ~~SDL_name.h~~                  (Reason: Nothing to wrap.)
 - [ ] ~~SDL_opengl.h~~                (Reason: Use a dedicated OpenGL wrapper such as [acdemiralp/gl](https://github.com/acdemiralp/gl) instead.)
 - [ ] ~~SDL_opengl_glext.h~~          (Reason: Use a dedicated OpenGL wrapper instead.)
