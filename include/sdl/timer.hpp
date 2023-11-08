@@ -113,10 +113,10 @@ public:
   }
 
 private:
-  std::function<void()>     callback_ {};
-  bool                      repeat_   {};
+  std::function<void()> callback_ {};
+  bool                  repeat_   {};
   
-  std::int32_t              native_   {};
+  std::int32_t          native_   {};
 };
 
 [[nodiscard]]

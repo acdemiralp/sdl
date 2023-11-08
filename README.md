@@ -110,7 +110,7 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [ ] ~~SDL_test_md5.h~~              (Reason: Use a dedicated testing library instead.)
 - [ ] ~~SDL_test_memory.h~~           (Reason: Use a dedicated testing library instead.)
 - [ ] ~~SDL_test_random.h~~           (Reason: Use a dedicated testing library instead.)
-- [ ] SDL_thread.h
+- [x] SDL_thread.h
 - [x] SDL_timer.h
 - [x] SDL_touch.h
 - [ ] ~~SDL_types.h~~                 (Reason: Nothing to wrap.)
