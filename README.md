@@ -85,7 +85,7 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [x] SDL_platform.h
 - [x] SDL_power.h
 - [x] SDL_quit.h
-- [ ] SDL_rect.h
+- [x] SDL_rect.h
 - [ ] SDL_render.h
 - [x] SDL_revision.h
 - [ ] ~~SDL_revision.h.cmake~~        (Reason: Nothing to wrap.)

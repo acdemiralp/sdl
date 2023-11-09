@@ -4,6 +4,7 @@
 #include <sdl/atomic.hpp>
 #include <sdl/log.hpp>
 #include <sdl/mouse.hpp>
+#include <sdl/rect.hpp>
 #include <sdl/sdl.hpp>
 #include <sdl/thread.hpp>
 #include <sdl/timer.hpp>
@@ -46,6 +47,13 @@ TEST_CASE("SDL Test")
   sdl::thread_local_storage tls;
   tls.set(&string_test);
   auto retrieved_string = tls.get<std::string>();
+
+  sdl::rectangle<std::int32_t> rect {{0 , 0 , 32, 32}};
+  sdl::rectangle<std::int32_t> rect2{{24, 24, 32, 32}};
+  sdl::rectangle<float>        rect3{{0 , 0 , 32, 32}};
+  sdl::rectangle<float>        rect4{{24, 24, 32, 32}};
+  auto intersection = rect.intersect(rect2);
+  auto merged       = rect.merged   (rect2);
 
   const auto window = SDL_CreateWindow("Test", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, SDL_WINDOW_SHOWN);
   bool       quit   = false;
