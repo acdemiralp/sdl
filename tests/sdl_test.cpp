@@ -2,6 +2,7 @@
 #include <sdl/all.hpp>
 
 #include <sdl/atomic.hpp>
+#include <sdl/hidapi.hpp>
 #include <sdl/log.hpp>
 #include <sdl/mouse.hpp>
 #include <sdl/rect.hpp>
@@ -54,6 +55,10 @@ TEST_CASE("SDL Test")
   sdl::rectangle<float>        rect4{{24, 24, 32, 32}};
   auto intersection = rect.intersect(rect2);
   auto merged       = rect.merged   (rect2);
+
+  //auto device_infos = sdl::hid_device_infos().value();
+  //auto device       = sdl::make_hid_device(device_infos[0].path).value();
+  //auto device_name  = device.manufacturer_string().value() + L" " + device.product_string().value();
 
   const auto window = SDL_CreateWindow("Test", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, SDL_WINDOW_SHOWN);
   bool       quit   = false;

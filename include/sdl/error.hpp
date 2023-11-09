@@ -27,7 +27,7 @@ inline std::string get_error        ()
   return SDL_GetError();
 }
 
-// Warning: The buffer must be allocated beforehand.
+// The buffer must be allocated beforehand.
 inline void        get_error_message(std::string& buffer)
 {
   SDL_GetErrorMsg(buffer.data(), static_cast<std::int32_t>(buffer.size()));
