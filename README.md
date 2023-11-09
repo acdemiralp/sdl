@@ -61,7 +61,7 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [x] SDL_guid.h
 - [ ] SDL_haptic.h
 - [x] SDL_hidapi.h
-- [ ] SDL_hints.h
+- [x] SDL_hints.h
 - [ ] SDL_joystick.h
 - [x] SDL_keyboard.h
 - [x] SDL_keycode.h
