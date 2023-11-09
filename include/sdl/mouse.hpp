@@ -94,21 +94,21 @@ inline native_window*                             get_mouse_focus         ()
 [[nodiscard]]
 inline mouse_state                                get_mouse_state         ()
 {
-  mouse_state state;
+  mouse_state state {};
   state.button_mask = SDL_GetMouseState        (state.position.data(), &state.position[1]);
   return state;
 }
 [[nodiscard]]
 inline mouse_state                                get_global_mouse_state  ()
 {
-  mouse_state state;
+  mouse_state state {};
   state.button_mask = SDL_GetGlobalMouseState  (state.position.data(), &state.position[1]);
   return state;
 }
 [[nodiscard]]
 inline mouse_state                                get_relative_mouse_state()
 {
-  mouse_state state;
+  mouse_state state {};
   state.button_mask = SDL_GetRelativeMouseState(state.position.data(), &state.position[1]);
   return state;
 }

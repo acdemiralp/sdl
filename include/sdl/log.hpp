@@ -193,7 +193,7 @@ inline void                log_set_output_function(const log_output_function& fu
   static log_output_function static_function;
   static_function = function; // Split declaration and assignment is necessary for assign to work on calls after the first.
 
-  SDL_LogSetOutputFunction([ ] (void* user_data, std::int32_t category, SDL_LogPriority priority, const char* message)
+  SDL_LogSetOutputFunction([ ] (void*, std::int32_t category, SDL_LogPriority priority, const char* message)
   {
     static_function(static_cast<log_category>(category), static_cast<log_priority>(priority), message);
   }, nullptr);
