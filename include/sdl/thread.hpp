@@ -17,7 +17,6 @@ using native_thread           = SDL_Thread;
 using thread_id               = unsigned long;
 using thread_function         = std::int32_t (*) (void*);
 using tls_destructor_function = void         (*) (void*);
-using tls_destructor_function = void         (*) (void*);
 
 enum class thread_priority
 {
@@ -29,7 +28,7 @@ enum class thread_priority
 
 // Bad practice: You should use `std::thread` instead.
 [[nodiscard]]
-inline std::expected<native_thread*, std::string> create_thread                (const thread_function function, const std::string& name,                               void* user_data)
+inline std::expected<native_thread*, std::string> create_thread                (const thread_function function, const std::string& name,                               void* user_data = nullptr)
 {
   auto result = SDL_CreateThread(function, name.c_str(), user_data);
   if (!result)
@@ -38,7 +37,7 @@ inline std::expected<native_thread*, std::string> create_thread                (
 }
 // Bad practice: You should use `std::thread` instead.
 [[nodiscard]]
-inline std::expected<native_thread*, std::string> create_thread_with_stack_size(const thread_function function, const std::string& name, const std::size_t stack_size, void* user_data)
+inline std::expected<native_thread*, std::string> create_thread_with_stack_size(const thread_function function, const std::string& name, const std::size_t stack_size, void* user_data = nullptr)
 {
   auto result = SDL_CreateThreadWithStackSize(function, name.c_str(), stack_size, user_data);
   if (!result)
@@ -118,6 +117,22 @@ inline void                                       tls_cleanup                  (
 }
 
 // Conveniences.
+
+// Bad practice: You should use the `thread_local` keyword instead.
+template <typename type> [[nodiscard]]
+std::expected<type*                , std::string> tls_get_as                   (const std::uint32_t tls_id)
+{
+  auto result = tls_get(tls_id);
+  if (!result)
+    return std::unexpected(result.error());
+  return static_cast<type*>(result.value());
+}
+// Bad practice: You should use the `thread_local` keyword instead.
+template <typename type>
+std::expected<void                 , std::string> tls_set_as                   (const std::uint32_t tls_id, const type* value, const tls_destructor_function destructor = nullptr)
+{
+  return tls_set(tls_id, static_cast<const void*>(value), destructor);
+}
 
 // Bad practice: You should use `std::thread` instead.
 class thread
@@ -225,18 +240,26 @@ public:
     return *this;
   }
 
-  template <typename type> [[nodiscard]]
-  std::expected<type*, std::string>       get     () const
+  [[nodiscard]]
+  std::expected<void*, std::string>       get     () const
   {
-    auto result = tls_get(native_);
-    if (!result)
-      return std::unexpected(result.error());
-    return static_cast<type*>(result.value());
+    return tls_get(native_);
+  }
+
+  std::expected<void , std::string>       set     (const void* value, const tls_destructor_function destructor = nullptr)
+  {
+    return tls_set(native_, value, destructor);
+  }
+
+  template <typename type> [[nodiscard]]
+  std::expected<type*, std::string>       get_as  () const
+  {
+    return tls_get_as<type>(native_);
   }
   template <typename type>
-  std::expected<void , std::string>       set     (const type* value, const tls_destructor_function destructor = nullptr)
+  std::expected<void , std::string>       set_as  (const type* value, const tls_destructor_function destructor = nullptr)
   {
-    return tls_set(native_, static_cast<const void*>(value), destructor);
+    return tls_set_as<type>(native_, value, destructor);
   }
 
   [[nodiscard]]

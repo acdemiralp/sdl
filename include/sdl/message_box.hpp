@@ -3,6 +3,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <expected>
+#include <span>
 #include <string>
 #include <type_traits>
 #include <vector>
@@ -65,12 +66,12 @@ struct message_box_color_scheme
 
 // Returns the index of the pressed button.
 inline std::expected<std::int32_t, std::string> show_message_box(
-  const std::string&                     title         ,
-  const std::string&                     message       ,
-  const std::vector<message_box_button>& buttons       ,
-  message_box_flags                      flags         = message_box_flags::information,
-  const window*                          window_ptr    = nullptr,
-  const message_box_color_scheme&        color_scheme  = message_box_color_scheme())
+  const std::string&                   title         ,
+  const std::string&                   message       ,
+  const std::span<message_box_button>& buttons       ,
+  message_box_flags                    flags         = message_box_flags::information,
+  const window*                        window_ptr    = nullptr,
+  const message_box_color_scheme&      color_scheme  = message_box_color_scheme())
 {
   // Design decisions:
   // - The message box data struct is not wrapped, its contents are the arguments of the function.

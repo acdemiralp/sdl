@@ -53,9 +53,9 @@ inline void                                               delay                 
 using timer_callback = std::uint32_t (*) (std::uint32_t, void*);
 
 // This function only accepts function pointers with a signature identical to SDL_TimerCallback, as it is stateless. See the `sdl::make_timer(std::chrono::milliseconds, std::function<void()>, bool)` for a more idiomatic, stateful alternative.
-inline std::expected<std::int32_t, std::string>           add_timer                (const std::chrono::milliseconds interval, const timer_callback& callback)
+inline std::expected<std::int32_t, std::string>           add_timer                (const std::chrono::milliseconds interval, const timer_callback& callback, void* user_data)
 {
-  const auto result = SDL_AddTimer(static_cast<std::uint32_t>(interval.count()), callback, nullptr);
+  const auto result = SDL_AddTimer(static_cast<std::uint32_t>(interval.count()), callback, user_data);
   if (!result)
     return std::unexpected(get_error());
   return result;

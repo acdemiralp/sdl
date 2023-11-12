@@ -3,6 +3,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <expected>
+#include <span>
 #include <string>
 #include <vector>
 
@@ -26,41 +27,24 @@ enum class sensor_type
   gyroscope_right     = SDL_SENSOR_GYRO_R
 };
 
-struct     sensor_data
-{
-  explicit sensor_data  (const std::size_t size)
-  : data(size), timestamps(size)
-  {
-    
-  }
-  sensor_data           (const sensor_data&  that) = default;
-  sensor_data           (      sensor_data&& temp) = default;
- ~sensor_data           ()                         = default;
-  sensor_data& operator=(const sensor_data&  that) = default;
-  sensor_data& operator=(      sensor_data&& temp) = default;
-
-  std::vector<float>         data;
-  std::vector<std::uint64_t> timestamps;
-};
-
 inline constexpr float standard_gravity = SDL_STANDARD_GRAVITY;
 
-inline void                                           lock_sensors                       ()
+inline void                                       lock_sensors                       ()
 {
   SDL_LockSensors  ();
 }
-inline void                                           unlock_sensors                     ()
+inline void                                       unlock_sensors                     ()
 {
   SDL_UnlockSensors();
 }
 
 [[nodiscard]]
-inline std::int32_t                                   num_sensors                        ()
+inline std::int32_t                               num_sensors                        ()
 {
   return SDL_NumSensors();
 }
 [[nodiscard]]
-inline std::expected<std::string       , std::string> sensor_get_device_name             (const std::int32_t device_index)
+inline std::expected<std::string   , std::string> sensor_get_device_name             (const std::int32_t device_index)
 {
   const auto result = SDL_SensorGetDeviceName(device_index);
   if (!result)
@@ -68,7 +52,7 @@ inline std::expected<std::string       , std::string> sensor_get_device_name    
   return result;
 }
 [[nodiscard]]
-inline std::expected<sensor_type       , std::string> sensor_get_device_type             (const std::int32_t device_index)
+inline std::expected<sensor_type   , std::string> sensor_get_device_type             (const std::int32_t device_index)
 {
   const auto result = SDL_SensorGetDeviceType(device_index);
   if (result == SDL_SENSOR_INVALID)
@@ -76,7 +60,7 @@ inline std::expected<sensor_type       , std::string> sensor_get_device_type    
   return static_cast<sensor_type>(result);
 }
 [[nodiscard]]
-inline std::expected<std::int32_t      , std::string> sensor_get_device_non_portable_type(const std::int32_t device_index)
+inline std::expected<std::int32_t  , std::string> sensor_get_device_non_portable_type(const std::int32_t device_index)
 {
   const auto result = SDL_SensorGetDeviceNonPortableType(device_index);
   if (result < 0)
@@ -84,7 +68,7 @@ inline std::expected<std::int32_t      , std::string> sensor_get_device_non_port
   return result;
 }
 [[nodiscard]]
-inline std::expected<std::int32_t      , std::string> sensor_get_device_instance_id      (const std::int32_t device_index)
+inline std::expected<std::int32_t  , std::string> sensor_get_device_instance_id      (const std::int32_t device_index)
 {
   const auto result = SDL_SensorGetDeviceInstanceID(device_index);
   if (result < 0)
@@ -93,7 +77,7 @@ inline std::expected<std::int32_t      , std::string> sensor_get_device_instance
 }
 
 [[nodiscard]]
-inline std::expected<native_sensor*    , std::string> sensor_open                        (const std::int32_t device_index)
+inline std::expected<native_sensor*, std::string> sensor_open                        (const std::int32_t device_index)
 {
   const auto result = SDL_SensorOpen(device_index);
   if (!result)
@@ -101,7 +85,7 @@ inline std::expected<native_sensor*    , std::string> sensor_open               
   return result;
 }
 [[nodiscard]]
-inline std::expected<native_sensor*    , std::string> sensor_from_instance_id            (const std::int32_t instance_id)
+inline std::expected<native_sensor*, std::string> sensor_from_instance_id            (const std::int32_t instance_id)
 {
   const auto result = SDL_SensorFromInstanceID(instance_id);
   if (!result)
@@ -109,7 +93,7 @@ inline std::expected<native_sensor*    , std::string> sensor_from_instance_id   
   return result;
 }
 [[nodiscard]]
-inline std::expected<std::string       , std::string> sensor_get_name                    (native_sensor* sensor)
+inline std::expected<std::string   , std::string> sensor_get_name                    (native_sensor* sensor)
 {
   const auto result = SDL_SensorGetName(sensor);
   if (!result)
@@ -117,7 +101,7 @@ inline std::expected<std::string       , std::string> sensor_get_name           
   return result;
 }
 [[nodiscard]]
-inline std::expected<sensor_type       , std::string> sensor_get_type                    (native_sensor* sensor)
+inline std::expected<sensor_type   , std::string> sensor_get_type                    (native_sensor* sensor)
 {
   const auto result = SDL_SensorGetType(sensor);
   if (result == SDL_SENSOR_INVALID)
@@ -125,7 +109,7 @@ inline std::expected<sensor_type       , std::string> sensor_get_type           
   return static_cast<sensor_type>(result);
 }
 [[nodiscard]]
-inline std::expected<std::int32_t      , std::string> sensor_get_non_portable_type       (native_sensor* sensor)
+inline std::expected<std::int32_t  , std::string> sensor_get_non_portable_type       (native_sensor* sensor)
 {
   const auto result = SDL_SensorGetNonPortableType(sensor);
   if (result < 0)
@@ -133,7 +117,7 @@ inline std::expected<std::int32_t      , std::string> sensor_get_non_portable_ty
   return result;
 }
 [[nodiscard]]
-inline std::expected<std::int32_t      , std::string> sensor_get_instance_id             (native_sensor* sensor)
+inline std::expected<std::int32_t  , std::string> sensor_get_instance_id             (native_sensor* sensor)
 {
   const auto result = SDL_SensorGetInstanceID(sensor);
   if (result < 0)
@@ -141,28 +125,26 @@ inline std::expected<std::int32_t      , std::string> sensor_get_instance_id    
   return result;
 }
 [[nodiscard]]
-inline std::expected<std::vector<float>, std::string> sensor_get_data                    (native_sensor* sensor, const std::int32_t count = 1)
+inline std::expected<void          , std::string> sensor_get_data                    (native_sensor* sensor, std::span<float>& data)
 {
-  std::vector<float> result(static_cast<std::size_t>(count));
-  if (SDL_SensorGetData(sensor, result.data(), count) < 0)
+  if (SDL_SensorGetData(sensor, data.data(), static_cast<std::int32_t>(data.size())) < 0)
     return std::unexpected(get_error());
-  return result;
+  return {};
 }
 [[nodiscard]]
-inline std::expected<sensor_data       , std::string> sensor_get_data_with_timestamp     (native_sensor* sensor, const std::int32_t count = 1)
+inline std::expected<void          , std::string> sensor_get_data_with_timestamp     (native_sensor* sensor, std::span<float>& data, std::span<std::uint64_t>& timestamps)
 {
-  sensor_data result(static_cast<std::size_t>(count));
-  if (SDL_SensorGetDataWithTimestamp(sensor, result.timestamps.data(), result.data.data(), count) < 0)
+  if (SDL_SensorGetDataWithTimestamp(sensor, timestamps.data(), data.data(), static_cast<std::int32_t>(data.size())) < 0)
     return std::unexpected(get_error());
-  return result;
+  return {};
 }
 
-inline void                                           sensor_close                       (native_sensor* sensor)
+inline void                                       sensor_close                       (native_sensor* sensor)
 {
   SDL_SensorClose(sensor);
 }
 
-inline void                                           sensor_update                      ()
+inline void                                       sensor_update                      ()
 {
   SDL_SensorUpdate();
 }
@@ -186,31 +168,31 @@ public:
   sensor_info& operator=(      sensor_info&& temp ) = default;
 
   [[nodiscard]]
-  std::expected<std::string , std::string> name             () const
+  std::expected<std::string , std::string> name               () const
   {
     return sensor_get_device_name             (index_);
   }
   [[nodiscard]]
-  std::expected<sensor_type , std::string> type             () const
+  std::expected<sensor_type , std::string> type               () const
   {
     return sensor_get_device_type             (index_);
   }
   [[nodiscard]]
-  std::expected<std::int32_t, std::string> non_portable_type() const
+  std::expected<std::int32_t, std::string> non_portable_type  () const
   {
     return sensor_get_device_non_portable_type(index_);
   }
   [[nodiscard]]
-  std::expected<std::int32_t, std::string> instance_id      () const
+  std::expected<std::int32_t, std::string> instance_id        () const
   {
     return sensor_get_device_instance_id      (index_);
   }
 
   [[nodiscard]]
-  std::expected<sensor      , std::string> open             () const;
+  std::expected<sensor      , std::string> open               () const;
 
   [[nodiscard]]
-  std::int32_t                             index            () const
+  std::int32_t                             index              () const
   {
     return index_;
   }
@@ -256,39 +238,39 @@ public:
   }
 
   [[nodiscard]]
-  std::expected<std::string       , std::string> name               () const
+  std::expected<std::string , std::string> name               () const
   {
     return sensor_get_name               (native_);
   }
   [[nodiscard]]
-  std::expected<sensor_type       , std::string> type               () const
+  std::expected<sensor_type , std::string> type               () const
   {
     return sensor_get_type               (native_);
   }
   [[nodiscard]]
-  std::expected<std::int32_t      , std::string> non_portable_type  () const
+  std::expected<std::int32_t, std::string> non_portable_type  () const
   {
     return sensor_get_non_portable_type  (native_);
   }
   [[nodiscard]]
-  std::expected<std::int32_t      , std::string> instance_id        () const
+  std::expected<std::int32_t, std::string> instance_id        () const
   {
     return sensor_get_instance_id        (native_);
   }
 
   [[nodiscard]]
-  std::expected<std::vector<float>, std::string> data               (const std::int32_t count = 1) const
+  std::expected<void        , std::string> data               (std::span<float>& data) const
   {
-    return sensor_get_data               (native_, count);
+    return sensor_get_data               (native_, data);
   }
   [[nodiscard]]
-  std::expected<sensor_data       , std::string> data_with_timestamp(const std::int32_t count = 1) const
+  std::expected<void        , std::string> data_with_timestamp(std::span<float>& data, std::span<std::uint64_t>& timestamps) const
   {
-    return sensor_get_data_with_timestamp(native_, count);
+    return sensor_get_data_with_timestamp(native_, data, timestamps);
   }
 
   [[nodiscard]]
-  native_sensor*                                 native             () const
+  native_sensor*                           native             () const
   {
     return native_;
   }

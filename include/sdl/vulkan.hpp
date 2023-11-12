@@ -40,7 +40,7 @@ inline std::expected<vkGetInstanceProcAddr   , std::string> vulkan_get_vkGetInst
     return std::unexpected(get_error());
 
   vkGetInstanceProcAddr result;
-  *reinterpret_cast<void**>(&result) = void_ptr;
+  reinterpret_cast<void*&>(result) = void_ptr; // Intentional undefined behavior. Valid in most implementations.
   return result;
 }
 [[nodiscard]]

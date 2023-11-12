@@ -174,7 +174,7 @@ inline void                log_message_v          (const log_category category, 
   SDL_LogMessageV(static_cast<std::int32_t>(category), static_cast<SDL_LogPriority>(priority), message, va_list);
 }
 
-using log_output_function = std::function<void(log_category, log_priority, const std::string&)>;
+using  log_output_function = std::function<void(log_category, log_priority, const std::string&)>;
 
 [[nodiscard]]
 inline log_output_function log_get_output_function()

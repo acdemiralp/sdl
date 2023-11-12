@@ -42,7 +42,7 @@ std::expected<function_pointer_type        , std::string> load_function_as      
     return std::unexpected(void_ptr.error());
 
   function_pointer_type result;
-  *reinterpret_cast<void**>(&result) = void_ptr.value();
+  reinterpret_cast<void*&>(result) = void_ptr.value(); // Intentional undefined behavior. Valid in most implementations.
   return result;
 }
 template <typename signature_type>        [[nodiscard]]
