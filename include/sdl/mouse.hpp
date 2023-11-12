@@ -288,7 +288,7 @@ inline std::expected<native_cursor*, std::string> create_cursor           (const
 class cursor
 {
 public:
-  // The constructor cannot transmit error state. You should use `sdl::make_default_cursor()` to handle errors.
+  // The constructor cannot transmit error state. You should use `sdl::make_cursor()` to handle errors.
   cursor           ()
   : native_(get_default_cursor().value_or(nullptr))
   {
@@ -306,13 +306,13 @@ public:
   {
 
   }
-  // The constructor cannot transmit error state. You should use `sdl::make_color_cursor(...)` to handle errors.
+  // The constructor cannot transmit error state. You should use `sdl::make_cursor(...)` to handle errors.
   cursor           (const sdl::surface& surface,                                                            const std::array<std::int32_t, 2>& offset)
   : native_(create_color_cursor(surface.native(), offset).value_or(nullptr))
   {
     
   }
-  // The constructor cannot transmit error state. You should use `sdl::make_system_cursor(system_cursor)` to handle errors.
+  // The constructor cannot transmit error state. You should use `sdl::make_cursor(system_cursor)` to handle errors.
   explicit cursor  (const system_cursor type)
   : native_(create_system_cursor(type).value_or(nullptr))
   {
