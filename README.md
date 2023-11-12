@@ -89,7 +89,7 @@ Alternatively, you can copy the contents of the include folder to your project.
 - [ ] SDL_render.h
 - [x] SDL_revision.h
 - [ ] ~~SDL_revision.h.cmake~~        (Reason: Nothing to wrap.)
-- [ ] SDL_rwops.h
+- [x] SDL_rwops.h
 - [x] SDL_scancode.h
 - [x] SDL_sensor.h
 - [x] SDL_shape.h
