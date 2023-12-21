@@ -28,7 +28,7 @@ Alternatively, you can copy the contents of the include folder to your project.
 
 ### Coverage by headers
 - [x] SDL.h
-- [ ] ~~SDL_assert.h~~                (Reason: Use `<cassert>` instead.)
+- [x] SDL_assert.h
 - [x] SDL_atomic.h
 - [ ] SDL_audio.h
 - [x] SDL_bits.h

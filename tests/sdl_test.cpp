@@ -1,6 +1,7 @@
 #include <doctest/doctest.h>
 #include <sdl/all.hpp>
 
+#include <sdl/assert.hpp>
 #include <sdl/atomic.hpp>
 #include <sdl/hidapi.hpp>
 #include <sdl/log.hpp>
@@ -13,6 +14,13 @@
 
 TEST_CASE("SDL Test")
 {
+  sdl::set_assertion_handler([ ] (const std::vector<sdl::assert_data>& report)
+  {
+    return sdl::assert_state::break_;
+  });
+  auto default_assertion_handler = sdl::get_default_assertion_handler();
+  auto assertion_handler         = sdl::get_assertion_handler();
+
   sdl::every_subsystem subsystems;
 
   sdl::cursor cursor (std::string(
